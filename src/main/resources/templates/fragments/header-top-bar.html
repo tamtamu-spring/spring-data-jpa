@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	
+<html lang="en" xmlns:th="http://www.thymleaf.org" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:sec3="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+                xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<!--<![endif]-->
+	<head th:replace="fragments/head_tag :: head_tag"></head>
+	<body><!-- Available classes for body: boxed , pattern1...pattern10 . Background Image - example add: data-background="assets/images/boxed_background/1.jpg"  -->
+
+		<!-- Top Bar -->
+		<header id="topHead" th:fragment="header-top-bar">
+			<div class="container">
+
+				<!-- PHONE/EMAIL -->
+				<t class="quick-contact pull-left">
+					<i class="fa fa-phone"></i> +44 7402724742 &bull; 
+					<a class="hidden-xs" href="mailto:anas.banun@anasbanun.com">anas.banun@anasbanun.com</a>
+				</t>
+
+			
+				<!-- /PHONE/EMAIL -->
+
+				<!-- LANGUAGE -->
+				<div class="btn-group pull-right hidden-xs">
+					<button th:replace="fragments/switchers/skin-switcher :: language-switcher"></button>
+
+					<ul class="dropdown-menu">
+						<li>
+							<a href="#">
+								<img src="../static/assets/images/flags/us.png" th:src="@{/assets/images/flags/us.png}" width="16" height="11" alt="EN Language" ></img> [US] English
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="../static/assets/images/flags/de.png" th:src="@{/assets/images/flags/de.png}" width="16" height="11" alt="DE Language" ></img> [DE] German
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="../static/assets/images/flags/fr.png" th:src="@{/assets/images/flags/fr.png}" width="16" height="11" alt="FR Language" ></img> [FR] French
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="../static/assets/images/flags/ru.png" th:src="@{/assets/images/flags/ru.png}" width="16" height="11" alt="RU Language" ></img> [RU] Russian
+							</a>
+						</li>
+					</ul>
+				</div>
+				<!-- /LANGUAGE -->
+
+
+				<!-- SIGN IN -->
+
+				<div class="nav pull-right orange" sec:authorize="!isAuthenticated()">
+					<a href="page-about-us.html" th:href="@{/index}"><i class="fa fa-users"></i> Sign in</a>
+				</div>
+	
+				    <div th:replace="fragments/switchers/skin-switcher :: logout-tag-1"></div>				
+				    <div th:replace="fragments/switchers/skin-switcher :: logout-tag-2"></div>
+			    
+				    
+				
+				<!-- /SIGN IN -->
+
+				<!-- CART MOBILE BUTTON -->
+				<a class="pull-right" id="btn-mobile-quick-cart" href="shop-cart.html" th:href="@{/shop-cart}"><i class="fa fa-shopping-cart"></i></a>
+				<!-- CART MOBILE BUTTON -->
+
+				<!-- LINKS -->
+				<div class="pull-right nav hidden-xs">
+					<a href="page-about-us.html" th:href="@{/page-about-us}"><i class="fa fa-angle-right"></i> About</a>
+					<a href="contact-us.html" th:href="@{/contact-us}"><i class="fa fa-angle-right"></i> Contact</a>
+				</div>
+				<!-- /LINKS -->				
+
+			</div>
+		</header>
+		<!-- /Top Bar -->
+
+			
+		<span id="header_shadow"></span>
+		<!-- /TOP NAV -->
+
+
+
+		<!-- STYLESWITCHER - REMOVE ON PRODUCTION/DEVELOPMENT -->
+		
+		
+		<div id="switcher" th:replace="fragments/switchers/style_switcher :: style_switcher"></div>
+
+		<div id="showSwitcher" class="styleSecondColor" th:replace="fragments/switchers/style_switcher :: show_switcher"><i class="fa fa-angle-double-right"></i></div>
+		
+		
+		<!-- /STYLESWITCHER -->
+
+
+		<!-- JAVASCRIPT FILES -->
+		<div th:replace="fragments/javascripts_srcs :: javascripts_srcs"></div>
+	
+	</body>
+</html>

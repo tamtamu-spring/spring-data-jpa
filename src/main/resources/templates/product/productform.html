@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html lang="en" xmlns:th="http://www.thymleaf.org" xmlns="http://www.w3.org/1999/xhtml"> <!--<![endif]-->
+	
+	<head th:replace="fragments/head_tag :: head_tag"></head>
+	
+	
+	<body><!-- Available classes for body: boxed , pattern1...pattern10 . Background Image - example add: data-background="assets/images/boxed_background/1.jpg"  -->
+
+		<!-- Top Bar -->
+		<header id="topHead" th:replace="fragments/header-top-bar :: header-top-bar"></header>
+		<!-- /Top Bar -->
+
+		<!-- TOP NAV -->
+		<header id="topNav" class="topHead" th:replace="fragments/header-top-nav :: header-top-nav"><!-- remove class="topHead" if no topHead used! --></header>
+
+		<span id="header_shadow"></span>
+		<!-- /TOP NAV -->
+
+
+		<!-- STYLESWITCHER - REMOVE ON PRODUCTION/DEVELOPMENT -->
+		<div id="switcher" th:replace="fragments/switchers/style_switcher :: style_switcher"></div>
+
+		<div id="showSwitcher" class="styleSecondColor" th:replace="fragments/switchers/style_switcher :: show_switcher"><i class="fa fa-angle-double-right"></i></div>
+		<!-- /STYLESWITCHER -->
+		
+
+		<!-- WRAPPER -->
+		<div id="wrapper">
+
+			<div id="edit">
+
+				<!-- PAGE TITLE -->
+				<header id="page-title">
+					<div class="container">
+						<h1><strong>Navigation</strong></h1>
+
+						<ul class="breadcrumb">
+						<li><a href="/index1">Database Management</a></li>
+						<li><a href="/customer/list">Customers</a></li>
+						<li><a href="/user/list">Users</a></li>						
+						<li><a href="/product/list">Products</a></li>
+							<li class="active">Edit Product</li>
+						</ul>
+					</div>
+				</header>
+
+				<section class="container">
+
+					<div class="row">
+
+					<!-- Edit Product -->
+
+					<div class="container white-row col-md-8">
+
+						<h3>
+							<strong>Edit</strong> Product Details
+						</h3>
+
+
+						<form class="form-horizontal col-md-12" th:object="${productForm}"
+							th:action="@{/product}" method="post">
+
+							<div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+								<p th:text="#{form.hasErrors}">Error Message</p>
+							</div>
+
+							<input type="hidden" th:field="*{id}" /> <input type="hidden"
+								th:field="*{version}" />
+
+							<div class="form-group"
+								th:class="${#fields.hasErrors('description')} ? 'form-group has-error' : 'form-group'">
+								<label>Description *</label> <input type="text"
+									required="required" class="form-control"
+									th:field="*{description}" th:errorclass="has-error" /> <span
+									class="help-block">
+									<ul>
+										<li th:each="err : ${#fields.errors('description')}"
+											th:text="${err}" />
+									</ul>
+								</span>
+
+							</div>
+
+							<div class="form-group"
+								th:class="${#fields.hasErrors('price')} ? 'form-group has-error' : 'form-group'">
+								<label>Price *</label> <input type="number" required="required"
+									min="0" max="5000" step="0.01" class="form-control"
+									th:field="*{price}" th:errorclass="has-error" /> <span
+									class="help-block">
+									<ul>
+										<li th:each="err : ${#fields.errors('price')}"
+											th:text="${err}" />
+									</ul>
+								</span>
+
+							</div>
+
+							<div class="form-group"
+								th:class="${#fields.hasErrors('imageUrl')} ? 'form-group has-error' : 'form-group'">
+								<label>Image Url *</label> <input type="text"
+									required="required" class="form-control" th:field="*{imageUrl}"
+									th:errorclass="has-error" /> <span class="help-block">
+									<ul>
+										<li th:each="err : ${#fields.errors('imageUrl')}"
+											th:text="${err}" />
+									</ul>
+								</span>
+
+							</div>
+
+							<button type="submit"
+								class="btn btn-default pull-right push-bottom">Update</button>
+
+						</form>
+
+					</div>
+
+
+					<!-- /Edit Product -->
+
+					<aside class="white-row col-md-3 col-md-push-1">
+
+						<h3>SEARCH THE WEBSITE!</h3>
+						<div class="row">
+							<div class="col-md-12">
+								<form method="get" action="#" class="input-group">
+									<input type="text" class="form-control" name="s" id="s"
+										value="" placeholder="search..."></input> <span
+										class="input-group-btn">
+										<button class="btn btn-primary">
+											<i class="fa fa-search"></i>
+										</button>
+									</span>
+								</form>
+							</div>
+						</div>
+
+						<h4>USEFUL LINKS</h4>
+						<ul class="nav nav-list">
+							<li><a href="/index1"><i class="fa fa-circle-o"></i> Database Management</a></li>
+							<li><a href="/customer/list"><i class="fa fa-circle-o"></i>	Customers</a></li>
+							<li><a href="/user/list"><i class="fa fa-circle-o"></i>	Users</a></li>
+							<li><a href="/product/list"><i class="fa fa-circle-o"></i> Products</a></li>
+						</ul>
+
+					</aside>
+
+
+
+				</div>
+
+
+					<p class="white-row">
+						Don't have an account yet? <a href="/page-signup">Click to create one</a>, it's free!
+					</p>
+
+				</section>
+
+			</div>
+		</div>
+		<!-- /WRAPPER -->
+
+
+	<!-- FOOTER -->
+	<footer th:replace="fragments/footer :: footer"></footer>
+	<!-- /FOOTER -->
+
+
+
+	<!-- JAVASCRIPT FILES -->
+	<div th:replace="fragments/javascripts_srcs :: javascripts_srcs"></div>
+
+
+
+</body>
+</html>

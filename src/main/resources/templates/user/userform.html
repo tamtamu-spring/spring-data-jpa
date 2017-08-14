@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html lang="en" xmlns:th="http://www.thymleaf.org" xmlns="http://www.w3.org/1999/xhtml"> <!--<![endif]-->
+	
+	<head th:replace="fragments/head_tag :: head_tag"></head>
+	
+	
+	<body><!-- Available classes for body: boxed , pattern1...pattern10 . Background Image - example add: data-background="assets/images/boxed_background/1.jpg"  -->
+
+		<!-- Top Bar -->
+		<header id="topHead" th:replace="fragments/header-top-bar :: header-top-bar"></header>
+		<!-- /Top Bar -->
+
+		<!-- TOP NAV -->
+		<header id="topNav" class="topHead" th:replace="fragments/header-top-nav :: header-top-nav"><!-- remove class="topHead" if no topHead used! --></header>
+
+		<span id="header_shadow"></span>
+		<!-- /TOP NAV -->
+
+
+		<!-- STYLESWITCHER - REMOVE ON PRODUCTION/DEVELOPMENT -->
+		<div id="switcher" th:replace="fragments/switchers/style_switcher :: style_switcher"></div>
+
+		<div id="showSwitcher" class="styleSecondColor" th:replace="fragments/switchers/style_switcher :: show_switcher"><i class="fa fa-angle-double-right"></i></div>
+		<!-- /STYLESWITCHER -->
+		
+
+		<!-- WRAPPER -->
+		<div id="wrapper">
+
+			<div id="edit">
+
+				<!-- PAGE TITLE -->
+				<header id="page-title">
+					<div class="container">
+						<h1><strong>Navigation</strong></h1>
+
+						<ul class="breadcrumb">
+						<li><a href="/index1">Database Management</a></li>
+						<li><a href="/product/list">Products</a></li>
+						<li><a href="/customer/list">Customers</a></li>
+						<li><a href="/user/list">Users</a></li>
+						<li class="active">Edit User</li>
+						</ul>
+					</div>
+				</header>
+
+				<section class="container">
+
+					<div class="row">
+
+					<!-- Edit User -->
+
+					<div class="container white-row col-md-7">
+
+						<h3>
+							<strong>Edit</strong> User Details
+						</h3>
+
+
+						<form class="form-horizontal col-md-12" th:object="${user}"
+							th:action="@{/}" method="post">
+
+							<input type="hidden" th:field="*{id}" /> <input type="hidden"
+								th:field="*{version}" /> <input type="hidden"
+								th:field="*{customer.id}" /> <input type="hidden"
+								th:field="*{customer.version}" />
+
+							<div class="form-group">
+								<label>User Name *</label>
+									<input required="required" type="text" class="form-control" th:field="*{username}" />
+							</div>
+
+							<div class="form-group">
+								<label>Password *</label>
+									<input required="required" type="password" name="password" class="form-control" />
+							</div>
+
+							<div class="form-group">
+								<label>First Name *</label>
+									<input required="required" type="text" class="form-control"
+										th:field="*{customer.firstName}" />
+							</div>
+
+							<div class="form-group">
+								<label>Last Name *</label>
+									<input required="required" type="text" class="form-control"
+										th:field="*{customer.lastName}" />
+							</div>
+							
+							
+							<div class="form-group">
+								<label>Email *</label>
+									<input required="required" type="text" class="form-control"
+										th:field="*{customer.email}" />
+							</div>
+							
+							<div class="form-group">
+								<label>Phone Number *</label>
+									<input required="required" type="text" class="form-control"
+										th:field="*{customer.phoneNumber}" />
+							</div>
+							<br></br><br></br>
+							
+						<h3>
+							<strong>Shipping Address</strong> 
+						</h3>
+							<div class="form-group">
+								<label>Address Line 1 *</label>
+									<input required="required" type="text" class="form-control"
+										th:field="*{customer.billingAddress.addressLine1}" />
+							</div>
+							
+							<div class="form-group">
+								<label>Address Line 2</label>
+									<input type="text" class="form-control"
+										th:field="*{customer.billingAddress.addressLine2}" />
+							</div>
+							
+							<div class="form-group">
+								<label>City *</label>
+									<input required="required" type="text" class="form-control"
+										th:field="*{customer.billingAddress.city}" />
+							</div>
+							
+							<div class="form-group">
+								<label>Stat/County *</label>
+									<input required="required" type="text" class="form-control"
+										th:field="*{customer.billingAddress.state}" />
+							</div>
+							
+							<div class="form-group">
+								<label>Zip Code/Post Code *</label>
+									<input required="required" type="text" class="form-control"
+										th:field="*{customer.billingAddress.zipCode}" />
+							</div>
+							
+							<div class="row">
+								<button type="submit" class="btn btn-default pull-right">Submit</button>
+							</div>
+						</form>
+
+					</div>
+
+
+					<!-- /Edit User -->
+
+                     <div class="col-md-5">
+					
+					<div class="row">
+					<div class="white-row col-md-11 col-md-push-1">
+					
+					<aside>
+
+						<h3>SEARCH THE WEBSITE!</h3>
+						<div class="row">
+							<div class="col-md-12">
+								<form method="get" action="#" class="input-group">
+									<input type="text" class="form-control" name="s" id="s"
+										value="" placeholder="search..."></input> <span
+										class="input-group-btn">
+										<button class="btn btn-primary">
+											<i class="fa fa-search"></i>
+										</button> 	
+									</span>
+								</form>
+							</div>
+						</div>
+
+						<h4>USEFUL LINKS</h4>
+						<ul class="nav nav-list">
+							<li><a href="/index1"><i class="fa fa-circle-o"></i> Database Management</a></li>
+							<li><a href="/product/list"><i class="fa fa-circle-o"></i> Products</a></li>
+							<li><a href="/customer/list"><i class="fa fa-circle-o"></i>	Customers</a></li>
+							<li><a href="/user/list"><i class="fa fa-circle-o"></i>	Users</a></li>
+						</ul>
+
+					</aside>
+					</div>
+					</div>
+
+						<div class="row">
+							<div class="white-row col-md-11 col-md-push-1">
+								<p>
+									Don't have an account yet? <a href="/page-signup">Click to
+										create one</a>, it's free!
+								</p>
+							</div>
+						</div>
+
+					</div>
+
+
+
+				</div>
+
+				</section>
+
+			</div>
+		</div>
+		<!-- /WRAPPER -->
+
+
+	<!-- FOOTER -->
+	<footer th:replace="fragments/footer :: footer"></footer>
+	<!-- /FOOTER -->
+
+
+
+	<!-- JAVASCRIPT FILES -->
+	<div th:replace="fragments/javascripts_srcs :: javascripts_srcs"></div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	
+<html lang="en" xmlns:th="http://www.thymleaf.org" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:sec3="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+                xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<!--<![endif]-->
+	
+	<head th:replace="common/header :: common-header"></head>
+	<head th:replace="fragments/head_tag :: head_tag"></head>
+	
+	<body><!-- Available classes for body: boxed , pattern1...pattern10 . Background Image - example add: data-background="assets/images/boxed_background/1.jpg"  -->
+
+		<!-- Top Bar -->
+		<header id="topHead" th:replace="fragments/header-top-bar :: header-top-bar"></header>
+		<!-- /Top Bar -->
+
+		<!-- TOP NAV -->
+		<header id="topNav" class="topHead" th:replace="fragments/header-top-nav :: header-top-nav"><!-- remove class="topHead" if no topHead used! --></header>
+
+		<span id="header_shadow"></span>
+		<!-- /TOP NAV -->
+
+
+		<!-- STYLESWITCHER - REMOVE ON PRODUCTION/DEVELOPMENT -->
+		<div id="switcher" th:replace="fragments/switchers/style_switcher :: style_switcher"></div>
+
+		<div id="showSwitcher" class="styleSecondColor" th:replace="fragments/switchers/style_switcher :: show_switcher"><i class="fa fa-angle-double-right"></i></div>
+		<!-- /STYLESWITCHER -->
+
+	<!-- WRAPPER -->
+	<div id="wrapper">
+
+		<div id="shop">
+
+			<!-- PAGE TITLE -->
+			<header id="page-title">
+				<div class="container">
+					<h1><strong>Banking Navigation</strong></h1>
+
+					<ul class="breadcrumb">
+					    <li><a th:href="@{/profile}">Profile</a></li>
+					    <li><a th:href="@{/bankingHome}">Banking Home</a></li>
+					    <li><a th:href="@{/savingsAccount}">Savings Account</a></li>
+						<li><a th:href="@{/betweenAccounts}">Transfer Between Accounts</a></li>
+						<li><a th:href="@{/toSomeoneElse}">Transfer To Someone Else</a></li>
+						<li><a th:href="@{/recipient}">Add/Edit Recipient</a></li>						
+						<li><a th:href="@{/create}">Make an Appointment</a></li>
+						<li class="active">Primary Account</li>
+					</ul>
+				</div>
+			</header>
+
+			<section class="container">
+				<div class="row">
+				
+    <!-- Primary Account Section -->
+    <div class="container white-row col-md-8">
+    
+
+    <!-- /.row -->
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4 class="black">Primary Balance: </h4>
+                        </div>
+                        <div class="col-md-6 text-left">
+                           <text>$ <text th:text="${primaryAccount.accountBalance}">...</text></text>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <span class="pull-right black"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- /.row -->
+
+    <div class="table-responsive">
+    <h2>Transactions</h2>
+        <table id="example" class="table table-bordered table-hover table-striped">
+            <thead>
+            <tr>
+                <th>Post Date</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Amount</th>
+                <th>Balance</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr data-th-each="primaryTransaction : ${primaryTransactionList}">
+                <td data-th-text="${primaryTransaction.date}">...</td>
+                <td data-th-text="${primaryTransaction.description}">...</td>
+                <td data-th-text="${primaryTransaction.type}">...</td>
+                <td data-th-text="${primaryTransaction.status}">...</td>
+                <td data-th-text="${primaryTransaction.amount}">...</td>
+                <td data-th-text="${primaryTransaction.availableBalance}">...</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+ 
+
+    			
+    </div>		
+    <!-- /Primary Account Section -->
+
+					<aside class="white-row col-md-3 col-md-push-1">
+
+						<ul class="nav nav-list">
+						<li><a th:href="@{/profile}"><i class="fa fa-circle-o"></i> Profile</a></li>
+						<li><a th:href="@{/bankingHome}"><i class="fa fa-circle-o"></i> Banking Home</a></li>						
+						<li><a th:href="@{/savingsAccount}"><i class="fa fa-circle-o"></i> Savings Account</a></li>
+						<li><a th:href="@{/deposit}"><i class="fa fa-circle-o"></i> Deposit</a></li>
+						<li><a th:href="@{/withdraw}"><i class="fa fa-circle-o"></i> Withdrawal</a></li>
+						<li><a th:href="@{/betweenAccounts}"><i class="fa fa-circle-o"></i> Transfer Between Accounts</a></li>
+						<li><a th:href="@{/toSomeoneElse}"><i class="fa fa-circle-o"></i> Transfer To Someone Else</a></li>
+						<li><a th:href="@{/recipient}"><i class="fa fa-circle-o"></i> Add/Edit Recipient</a></li>						
+						<li><a th:href="@{/create}"><i class="fa fa-circle-o"></i> Make an Appointment</a></li>
+						
+						</ul>
+
+					</aside>
+				</div>
+
+			</section>
+
+		</div>
+	</div>
+	<!-- /WRAPPER -->
+
+	<!-- FOOTER -->
+	<footer th:replace="fragments/footer :: footer"></footer>
+	<!-- /FOOTER -->
+	<!-- JAVASCRIPT FILES -->
+
+	<div th:replace="fragments/javascripts_srcs :: javascripts_srcs"></div>
+	<div th:replace="common/header :: body-bottom-scripts"/>
+
+</body>
+</html>

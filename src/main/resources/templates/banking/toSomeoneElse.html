@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	
+<html lang="en" xmlns:th="http://www.thymleaf.org" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:sec3="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+                xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<!--<![endif]-->
+
+	<head th:replace="common/header :: common-header"></head>
+	<head th:replace="fragments/head_tag :: head_tag"></head>
+	
+	<body><!-- Available classes for body: boxed , pattern1...pattern10 . Background Image - example add: data-background="assets/images/boxed_background/1.jpg"  -->
+
+		<!-- Top Bar -->
+		<header id="topHead" th:replace="fragments/header-top-bar :: header-top-bar"></header>
+		<!-- /Top Bar -->
+
+		<!-- TOP NAV -->
+		<header id="topNav" class="topHead" th:replace="fragments/header-top-nav :: header-top-nav"><!-- remove class="topHead" if no topHead used! --></header>
+
+		<span id="header_shadow"></span>
+		<!-- /TOP NAV -->
+
+
+		<!-- STYLESWITCHER - REMOVE ON PRODUCTION/DEVELOPMENT -->
+		<div id="switcher" th:replace="fragments/switchers/style_switcher :: style_switcher"></div>
+
+		<div id="showSwitcher" class="styleSecondColor" th:replace="fragments/switchers/style_switcher :: show_switcher"><i class="fa fa-angle-double-right"></i></div>
+		<!-- /STYLESWITCHER -->
+
+
+	<!-- WRAPPER -->
+	<div id="wrapper">
+
+		<div id="shop">
+
+			<!-- PAGE TITLE -->
+			<header id="page-title">
+				<div class="container">
+					<h1><strong>Banking Navigation</strong></h1>
+
+					<ul class="breadcrumb">
+					    <li><a th:href="@{/profile}">Profile</a></li>
+					    <li><a th:href="@{/bankingHome}">Banking Home</a></li>
+					    <li><a th:href="@{/primaryAccount}">Primary Account</a></li>
+					    <li><a th:href="@{/savingsAccount}">Savings Account</a></li>
+						<li><a th:href="@{/betweenAccounts}">Transfer Between Accounts</a></li>
+						<li><a th:href="@{/recipient}">Add/Edit Recipient</a></li>						
+						<li><a th:href="@{/create}">Make an Appointment</a></li>
+						<li class="active">Transfer To Someone Else</li>
+					</ul>
+				</div>
+			</header>
+
+			<section class="container">
+				<div class="row">
+				
+    <!-- Transfer To Someone Else Account Section -->
+    <div class="container white-row col-md-5">
+    
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <form th:action="@{/toSomeoneElse}" method="post">
+                <div class="form-group" >
+                    <label for="recipientName">1. Please choose the recipient:</label>
+                    <select class="form-control" th:value="${recipientName}"  name="recipientName" id="recipientName" required="required">
+                        <option disabled="disabled" selected="selected"> -- select the recipient -- </option>
+                        <option data-th-each="eachRecipient : ${recipientList}" data-th-text="${eachRecipient.name}"></option>
+                    </select>
+                    <br />
+                </div>
+
+                <div class="form-group" >
+                    <label for="accountType">2. Please select the account you would like to transfer from:</label>
+                    <select class="form-control" th:value="${accountType}" name="accountType" id="accountType" required="required">
+                        <option disabled="disabled" selected="selected"> -- select your account -- </option>
+                        <option>Primary</option>
+                        <option>Savings</option>
+                    </select>
+                    <br />
+                </div>
+
+                <div class="form-group">
+                    <label>3. Please specify the amount you would like to transfer: </label>
+                    <span class="input-group-addon">Amount $</span>
+                    <input th:value="${amount}" type="text" name="amount" id="amount" class="form-control" aria-label="Amount (to the nearest dollar)"/>
+                </div>
+
+                <input type="hidden"
+                       name="${_csrf.parameterName}"
+                       value="${_csrf.token}"/>
+
+                <button class="btn btn-primary btn-block" type="submit">Transfer</button>
+            </form>
+
+
+        </div>
+    </div>
+     			
+    </div>		
+    <!-- /Transfer To Someone Else Account Section -->
+
+					<aside class="white-row col-md-5 col-md-push-2">
+
+						<ul class="nav nav-list">
+						<li><a th:href="@{/profile}"><i class="fa fa-circle-o"></i> Profile</a></li>
+						<li><a th:href="@{/bankingHome}"><i class="fa fa-circle-o"></i> Banking Home</a></li>	
+						<li><a th:href="@{/primaryAccount}"><i class="fa fa-circle-o"></i> Primary Account</a></li>					
+						<li><a th:href="@{/savingsAccount}"><i class="fa fa-circle-o"></i> Savings Account</a></li>
+						<li><a th:href="@{/deposit}"><i class="fa fa-circle-o"></i> Deposit</a></li>
+						<li><a th:href="@{/withdraw}"><i class="fa fa-circle-o"></i> Withdrawal</a></li>
+						<li><a th:href="@{/betweenAccounts}"><i class="fa fa-circle-o"></i> Transfer Between Accounts</a></li>
+						<li><a th:href="@{/recipient}"><i class="fa fa-circle-o"></i> Add/Edit Recipient</a></li>						
+						<li><a th:href="@{/create}"><i class="fa fa-circle-o"></i> Make an Appointment</a></li>
+						
+						</ul>
+
+					</aside>
+				</div>
+
+			</section>
+
+		</div>
+	</div>
+	<!-- /WRAPPER -->
+
+	<!-- FOOTER -->
+	<footer th:replace="fragments/footer :: footer"></footer>
+	<!-- /FOOTER -->
+
+	<!-- JAVASCRIPT FILES -->
+	<div th:replace="fragments/javascripts_srcs :: javascripts_srcs"></div>
+	<div th:replace="common/header :: body-bottom-scripts"/>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	
+<html lang="en" xmlns:th="http://www.thymleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<!--<![endif]-->
+
+<!-- =================================================================== -->
+
+<!-- SKIN SWITCHER -->
+<link id="css_dark_skin" href="../static/assets/css/layout-dark.css" th:href="@{/assets/css/layout-dark.css}" rel="stylesheet" type="text/css" th:fragment="skin-switcher"/>
+
+<!-- orange: dark style -->
+<link href="../static/assets/css/color_scheme/orange-dark.css" th:href="@{/assets/css/color_scheme/orange-dark.css}" rel="stylesheet" type="text/css" th:fragment="orange-css"/>
+
+<!-- orange: white style -->
+<!-- <link href="../static/assets/css/color_scheme/orange-white.css" th:href="@{/assets/css/color_scheme/orange-white.css}" rel="stylesheet" type="text/css" th:fragment="orange-css"/> -->
+
+<!-- /SKIN SWITCHER -->
+
+<!-- =================================================================== -->
+
+<!-- VERSION SWITCHER -->
+<body>
+    <header>
+      <div>
+        <ul>
+        
+          <!--  Light Version -->
+<!--           <li th:fragment="version-switcher"><a class="yellow" href="../" th:href="@{../}">Dark Version</a></li> -->
+          
+          <!--  Dark Version -->
+          <li th:fragment="version-switcher"><a class="yellow" href="/light/" th:href="@{/light}">Light Version</a></li>
+       
+       </ul>
+      </div>
+    </header>
+</body>
+<!-- /VERSION SWITCHER -->
+
+<!-- =================================================================== -->
+
+<!-- LANGUAGE -->
+
+   <!--  Dark Version -->
+					<button th:fragment="language-switcher" class="dropdown-toggle language" type="button" data-toggle="dropdown">
+						<img src="../static/assets/images/flags/us.png" th:src="@{/assets/images/flags/us.png}" width="16" height="11" alt="EN Language" ></img> English <span class="caret white"></span>
+					</button>
+					
+   <!--  Light Version -->
+					<!-- <button th:fragment="language-switcher" class="dropdown-toggle language" type="button" data-toggle="dropdown">
+						<img src="../static/assets/images/flags/us.png" th:src="@{/assets/images/flags/us.png}" width="16" height="11" alt="EN Language" ></img> English <span class="caret"></span>
+					</button> -->
+<!-- /LANGUAGE -->
+
+
+<!-- =================================================================== -->
+
+<!-- Dark Version -->
+				    <div th:fragment="logout-tag-1" class="white pull-right">				    
+				    	<form sec:authorize="isAuthenticated()" id="frmlogout" th:action="@{/logout}" method="post" class="form-inline">
+				    		| <t id="logoutImg" class="glyphicon glyphicon-log-out"></t>
+				    		  <span ><a th:href="@{/logout}"> logout</a></span>
+				    	</form>	
+				    </div>				
+
+				    <div th:fragment="logout-tag-2" class="nav pull-right hidden-xs orange" sec:authorize="isAuthenticated()">
+			            Welcome! <t sec:authentication="principal.firstName">firstname</t>
+
+				    </div>
+<!-- /Dark Version -->				    
+
+<!-- =================================================================== -->
+
+<!-- Light Version -->
+
+				   <!--  <div th:fragment="logout-tag-1" class="white pull-right">				    
+				    	<form sec:authorize="isAuthenticated()" id="frmlogout" th:action="@{/logout}" method="post" class="form-inline">
+				    		| <t id="logoutImg" class="glyphicon glyphicon-log-out black"></t>
+				    		  <span ><a th:href="@{/logout}"> logout</a></span>
+				    	</form>	
+				    </div>				
+
+				    <div th:fragment="logout-tag-2" class="nav pull-right hidden-xs orange" sec:authorize="isAuthenticated()">
+			            Welcome! <t sec:authentication="principal.firstName">username</t>
+
+				    </div> -->
+
+
+
+<!-- /Light Version -->
+
+
+<!-- =================================================================== -->
+
+<!-- /Dark Version -->
+<t th:fragment="banking-application" class="orange"><b>Banking Application</b></t>
+
+<!-- /Light Version -->
+<!-- <t th:fragment="banking-application" class="black"><b>Banking Application</b></t> -->
+
+
+
+<!-- =================================================================== -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

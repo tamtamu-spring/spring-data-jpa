@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	
+<html lang="en" xmlns:th="http://www.thymleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<!--<![endif]-->
+
+
+
+<!-- SKIN SWITCHER -->
+<!-- <link id="css_dark_skin" href="../static/assets/css/layout-dark.css" th:href="@{/assets/css/layout-dark.css}" rel="stylesheet" type="text/css" th:fragment="skin-switcher"/> -->
+
+<!-- orange: dark style -->
+<!-- <link href="../static/assets/css/color_scheme/orange-dark.css" th:href="@{/assets/css/color_scheme/orange-dark.css}" rel="stylesheet" type="text/css" th:fragment="orange-css"/> -->
+
+<!-- orange: white style -->
+<link href="../static/assets/css/color_scheme/orange-white.css" th:href="@{/assets/css/color_scheme/orange-white.css}" rel="stylesheet" type="text/css" th:fragment="orange-css"/>
+
+
+
+<!-- VERSION SWITCHER -->
+<body>
+    <header>
+      <div>
+        <ul>
+          <li th:fragment="version-switcher"><a class="yellow" href="/dark/" th:href="@{/dark/}">Dark Version</a></li>
+          <!-- <li th:fragment="version-switcher"><a class="yellow" href="../" th:href="@{../}">Light Version</a></li> -->
+       </ul>
+      </div>
+    </header>
+</body>
+<!-- /VERSION SWITCHER -->
+
+
+
+
+<!-- <link id="css_dark_skin" href="../static/assets/css/layout-dark.css" th:href="@{/assets/css/layout-dark.css}" rel="stylesheet" type="text/css" th:replace="fragments/skin-switcher :: skin-switcher"/> -->
+<!-- <link id="css_dark_skin" href="../static/assets/css/layout-dark.css" th:href="@{/assets/css/layout-dark.css}" rel="stylesheet" type="text/css" th:replace="fragments/switchers/skin-switcher :: skin-switcher"/> -->
+
+</html>

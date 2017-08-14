@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	
+<html lang="en" xmlns:th="http://www.thymleaf.org" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<!--<![endif]-->
+	<head th:replace="fragments/head_tag :: head_tag"></head>
+	
+	<body><!-- Available classes for body: boxed , pattern1...pattern10 . Background Image - example add: data-background="assets/images/boxed_background/1.jpg"  -->
+
+
+		<!-- TOP NAV -->
+		<header id="topNav" class="topHead" th:fragment="header-top-nav"><!-- remove class="topHead" if no topHead used! -->
+			<div class="container">
+
+				<!-- Mobile Menu Button -->
+				<button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+					<i class="fa fa-bars"></i>
+				</button>
+
+				<!-- Logo text or image -->
+				<a class="logo" href="index.html" th:href="@{/home}">
+					<img th:replace="fragments/switchers/logo-switcher :: logo-switcher"></img>
+				</a>
+
+				<!-- Top Nav -->
+				<div class="navbar-collapse nav-main-collapse collapse pull-right">
+					<nav class="nav-main mega-menu">
+						<ul class="nav nav-pills nav-main scroll-menu" id="topMain">
+						
+							<li class="dropdown mega-menu-item mega-menu-fullwidth" sec:authorize="isAuthenticated()">
+								<a class="dropdown-toggle" href="#">
+									<t th:replace="fragments/switchers/skin-switcher :: banking-application"><b>Banking Application</b></t> <i class="fa fa-angle-down"></i>
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<div class="mega-menu-content">
+											<div class="row">
+											    
+											   <div class="col-md-2">
+													<ul class="sub-menu">
+														<li>
+															<t class="mega-menu-sub-title">Home</t>
+															<ul class="sub-menu">
+                                                                 <li><a th:href="@{/bankingHome}">Banking Home</a></li>
+															</ul>
+														</li>
+													</ul>
+												</div>
+											    
+												<div class="col-md-2">
+													<ul class="sub-menu">
+														<li>
+															<t class="mega-menu-sub-title">Profile</t>
+															<ul class="sub-menu">
+                                                                 <li><a th:href="@{/profile}">Edit your Profile</a></li>
+															</ul>
+														</li>
+													</ul>
+												</div>
+												<div class="col-md-2">
+													<ul class="sub-menu">
+														<li>
+															<t class="mega-menu-sub-title">Accounts</t>
+															<ul class="sub-menu">
+																<li><a th:href="@{/primaryAccount}">Primary</a></li>
+					                                            <li><a th:href="@{/savingsAccount}">Savings</a></li>
+					                                            <li><a th:href="@{/deposit}"> Deposit</a></li>
+						                                        <li><a th:href="@{/withdraw}"> Withdrawal</a></li>
+															</ul>
+														</li>
+													</ul>
+												</div>
+												<div class="col-md-3">
+													<ul class="sub-menu">
+														<li>
+															<t class="mega-menu-sub-title">Transfer</t>
+															<ul class="sub-menu">
+																<li><a th:href="@{/betweenAccounts}">Between Accounts</a></li>
+                                                                <li><a th:href="@{/toSomeoneElse}">To Someone Else</a></li>
+                                                                <li><a th:href="@{/recipient}">Add/Edit Recipient</a></li>
+															</ul>
+														</li>
+													</ul>
+												</div>
+												<div class="col-md-3">
+													<ul class="sub-menu">
+														<li>
+															<t class="mega-menu-sub-title">Appointment</t>
+															<ul class="sub-menu">
+																 <li><a th:href="@{/create}">Make an Appointment</a></li>
+															</ul>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</li>							
+							
+							
+												
+							<li class="dropdown active"><a class="dropdown-toggle" href="#">Home <i class="fa fa-angle-down"></i></a>
+								<ul class="dropdown-menu">
+														
+									<li class="dropdown-submenu"><a href="#">Revolution Slider</a>
+										<ul class="dropdown-menu">
+											<li><a href="revolution-half-slider.html" th:href="@{/revolution-half-slider}">Half Slider</a></li>
+											<li><a href="revolution-full-slider.html" th:href="@{/revolution-full-slider}">Full Slider</a></li>
+											<li><a href="revolution-video.html" th:href="@{/revolution-video}">Full Video</a></li>
+											<li><a href="revolution-ken-burns.html" th:href="@{/revolution-ken-burns}">Ken Burns</a></li>
+											<li><a href="revolution-official-1.html" th:href="@{/revolution-official-1}">More Examples</a></li>
+										</ul>
+									</li>
+									<li class="dropdown-submenu"><a href="#">Superslides Slider</a>
+										<ul class="dropdown-menu">
+											<li><a href="superslides-slider-half.html" th:href="@{/superslides-slider-half}">Half Slider</a></li>
+											<li><a href="superslides-slider-full.html" th:href="@{/superslides-slider-full}">Full Slider</a></li>
+											<li><a href="superslides-video.html" th:href="@{/superslides-video}">Half Video</a></li>
+											<li><a href="superslides-video-full.html" th:href="@{/superslides-video-full}">Full Video</a></li>
+										</ul>
+									</li>
+									<li class="divider"></li>
+									<li th:replace="fragments/switchers/skin-switcher :: version-switcher"></li>
+									<li><a href="index-extended.html" th:href="@{/index-extended}">Extended</a></li>									
+									<li><a href="shop-home.html" th:href="@{/shop-home}">Shop</a></li>
+									<li><a href="realestate-home.html" th:href="@{/realestate-home}">Real Estate</a></li>
+									<li><a href="portfolio-home.html" th:href="@{/portfolio-home}">Portfolio</a></li>
+									<li><a href="medical-home.html" th:href="@{/medical-home}">Medical</a></li>
+									<li><a href="college-home.html" th:href="@{/college-home}">College</a></li>
+									<li class="divider"></li>
+									<li><a href="onepage-superslides.html" th:href="@{/onepage-superslides}" target="_blank">Onepage - Superslides</a></li>
+									<li><a href="onepage-revolution.html" th:href="@{/onepage-revolution}" target="_blank">Onepage - Revolution</a></li>
+									<li><a href="index-more.html" th:href="@{/index-more}">More...</a></li>
+								</ul>
+							</li>
+							<li class="dropdown mega-menu-item mega-menu-two-columns">
+								<a class="dropdown-toggle" href="#">
+									Pages <i class="fa fa-angle-down"></i>
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<div class="mega-menu-content">
+											<div class="row">
+
+												<div class="col-md-6">
+													<ul class="sub-menu">
+														<li>
+															<ul class="sub-menu">
+
+																<li><a href="shortcodes-rows.html" th:href="@{/shortcodes-rows}"><i class="fa fa-star-o"></i> Shortcodes</a></li>
+																<li><a href="page-about-us.html" th:href="@{/page-about-us}"><i class="fa fa-check-square-o"></i> About Us</a></li>
+																<li><a href="page-about-me.html" th:href="@{/page-about-me}"><i class="fa fa-check-square-o"></i> About Me</a></li>
+																<li><a href="page-team.html" th:href="@{/page-team}"><i class="fa fa-check-square-o"></i> Team</a></li>
+																<li><a href="page-services.html" th:href="@{/page-services}"><i class="fa fa-check-square-o"></i> Services</a></li>
+																<li><a href="page-faq.html" th:href="@{/page-faq}"><i class="fa fa-check-square-o"></i> FAQ</a></li>
+																<li><a href="page-support.html" th:href="@{/page-support}"><i class="fa fa-check-square-o"></i> Support</a></li>
+																<li><a href="page-privacy-policy.html" th:href="@{/page-privacy-policy}"><i class="fa fa-check-square-o"></i> Privacy Policy</a></li>
+																<li><a href="page-terms-and-conditions.html" th:href="@{/page-terms-and-conditions}"><i class="fa fa-check-square-o"></i> Terms Page</a></li>
+																<li><a href="page-invoice.html" th:href="@{/page-invoice}"><i class="fa fa-check-square-o"></i> Invoice</a></li>
+																<li class="dropdown-submenu">
+																	<a href="#"><i class="fa fa-check-square-o"></i> Contact</a>
+																	<ul class="dropdown-menu">
+																		<li><a href="contact-us.html" th:href="@{/contact-us}">Version 1</a></li>
+																		<li><a href="contact-us-2.html" th:href="@{/contact-us-2}">Version 2</a></li>
+																		<li><a href="contact-us-3.html" th:href="@{/contact-us-3}">Version 3</a></li>
+																		<li><a href="contact-us-4.html" th:href="@{/contact-us-4}">Version 4</a></li>
+																	</ul>
+																</li>
+																<li><a href="page-sitemap.html" th:href="@{/page-sitemap}"><i class="fa fa-sitemap"></i> Sitemap</a></li>
+															</ul>
+														</li>
+													</ul>
+												</div>
+
+												<div class="col-md-6">
+													<ul class="sub-menu">
+														<li>
+															<ul class="sub-menu">
+																<li><a href="page-testimonials.html" th:href="@{/page-testimonials}"><i class="fa fa-check-square-o"></i> Testimonials</a></li>
+																<li><a href="page-pricing.html" th:href="@{/page-pricing}"><i class="fa fa-check-square-o"></i> Pricing</a></li>
+																<li><a href="page-pricing-extended.html" th:href="@{/page-pricing-extended}"><i class="fa fa-check-square-o"></i> Pricing Extended</a></li>
+																<li><a href="page-signin.html" th:href="@{/login}"><i class="fa fa-check-square-o"></i> Login</a></li>
+																<li><a href="page-signup.html" th:href="@{/signup}"><i class="fa fa-check-square-o"></i> Register</a></li>
+																
+																<li><a href="page-maintenance.html" th:href="@{/page-maintenance}"><i class="fa fa-check-square"></i> Maintenance</a></li>
+																<li class="dropdown-submenu">
+																	<a href="#"><i class="fa fa-check-square"></i> Coming Soon</a>
+																	<ul class="dropdown-menu">
+																		<li><a href="page-coming-soon-image.html" th:href="@{/page-coming-soon-image}">Coming Soon - Image</a></li>
+																		<li><a href="page-coming-soon-video.html" th:href="@{/page-coming-soon-video}">Coming Soon - Video</a></li>
+																	</ul>
+																</li>
+																<li class="dropdown-submenu">
+																	<a href="#"><i class="fa fa-check-square"></i> Custom Header</a>
+																	<ul class="dropdown-menu">
+																		<li><a href="page-header-basic.html" th:href="@{/page-header-basic}">Basic</a></li>
+																		<li><a href="page-header-image.html" th:href="@{/page-header-image}">Image</a></li>
+																		<li><a href="page-header-overlay1.html" th:href="@{/page-header-overlay1}">Overlay 1</a></li>
+																		<li><a href="page-header-overlay2.html" th:href="@{/page-header-overlay2}">Overlay 2</a></li>
+																		<li><a href="page-header-overlay3.html" th:href="@{/page-header-overlay3}">Overlay 3</a></li>
+																		<li><a href="page-header-delayed-parallax.html" th:href="@{/page-header-delayed-parallax}">Delayed Parallax</a></li>
+																		<li><a href="page-header-standard-parallax.html" th:href="@{/page-header-standard-parallax}">Standard Parallax</a></li>
+																	</ul>
+																</li>
+																<li><a href="page-full-width.html" th:href="@{/page-full-width}"><i class="fa fa-check-square-o"></i> Full width</a></li>
+																<li><a href="page-left-sidebar.html" th:href="@{/page-left-sidebar}"><i class="fa fa-check-square-o"></i> Left Sidebar</a></li>
+																<li><a href="page-right-sidebar.html" th:href="@{/page-right-sidebar}"><i class="fa fa-check-square-o"></i> Right Sidebar</a></li>
+																<li><a href="email-template.html" th:href="@{/email-template}"><i class="fa fa-envelope"></i>Email Template</a></li>
+															</ul>
+														</li>
+													</ul>
+												</div>
+														
+											</div>
+										</div>
+									</li>
+								</ul>
+							</li>
+							<li class="dropdown mega-menu-item mega-menu-fullwidth">
+								<a class="dropdown-toggle" href="#">
+									Features <i class="fa fa-angle-down"></i>
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<div class="mega-menu-content">
+											<div class="row">
+												<div class="col-md-3">
+													<ul class="sub-menu">
+														<li>
+															<t class="mega-menu-sub-title">General Features</t>
+															<ul class="sub-menu">
+																<li><a href="feature-grid-system.html" th:href="@{/feature-grid-system}">Grid System</a></li>
+																<li><a href="feature-icons.html" th:href="@{/feature-icons}">Icons</a></li>
+																<li><a href="feature-pricing-tables.html" th:href="@{/feature-pricing-tables}"><em>Pricing Tables</em></a></li>
+																<li><a href="feature-testimonials.html" th:href="@{/feature-testimonials}"><em>Testimonials</em></a></li>
+																<li><a href="email-template.html" th:href="@{/email-template}"><em>Email Template</em></a></li>
+																<li><a href="shortcodes-rows.html" th:href="@{/shortcodes-rows}"><em>Shortcodes</em></a></li>
+																<li><a href="feature-animations.html" th:href="@{/feature-animations}">Animations</a></li>
+																<li><a href="feature-typograpy.html" th:href="@{/feature-typograpy}">Typograpy</a></li>
+															</ul>
+														</li>
+													</ul>
+												</div>
+												<div class="col-md-3">
+													<ul class="sub-menu">
+														<li>
+															<t class="mega-menu-sub-title">Sliders</t>
+															<ul class="sub-menu">
+																<li><a href="feature-content-carousel.html" th:href="@{/feature-content-carousel}">Content Carousel</a></li>
+																<li><a href="revolution-official-1.html" th:href="@{/revolution-official-1}">(17) Premium Revolution Slider</a></li>
+															</ul>
+														</li>
+													</ul>
+												</div>
+												<div class="col-md-3">
+													<ul class="sub-menu">
+														<li>
+															<t class="mega-menu-sub-title">Headers</t>
+															<ul class="sub-menu">
+																<li><a href="header-1.html" th:href="@{/header-1}">Header Version 1</a></li>
+																<li><a href="header-2.html" th:href="@{/header-2}">Header Version 2</a></li>
+																<li><a href="header-3.html" th:href="@{/header-3}">Header Version 3</a></li>
+																<li><a href="header-4.html" th:href="@{/header-4}">Header Version 4</a></li>
+															</ul>
+														</li>
+													</ul>
+												</div>
+												<div class="col-md-3">
+													<ul class="sub-menu">
+														<li>
+															<t class="mega-menu-sub-title">Unique Bonuses</t>
+															<ul class="sub-menu">
+																<li><a href="onepage-superslides.html" th:href="@{/onepage-superslides}" target="_blank">Onepage - Superslides</a></li>
+																<li><a href="onepage-revolution.html" th:href="@{/onepage-revolution}" target="_blank">Onepage - Revolution</a></li>
+																<li><a href="email-template.html" th:href="@{/email-template}">Email Template</a></li>
+															</ul>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</li>
+							<li class="dropdown"><a class="dropdown-toggle" href="#"><b>Special</b> <i class="fa fa-angle-down"></i></a>
+								<ul class="dropdown-menu">
+									<li><a href="magazine-home.html" th:href="@{/magazine-home}">Magazine - Home</a></li>
+									<li><a href="magazine-category.html" th:href="@{/magazine-category}">Magazine - Category</a></li>
+									<li><a href="magazine-single.html" th:href="@{/magazine-single}">Magazine - Single</a></li>
+									<li class="divider"></li>
+									<li><a href="realestate-home.html" th:href="@{/realestate-home}">Real Estate - Home</a></li>
+									<li><a href="realestate-list.html" th:href="@{/realestate-list}">Real Estate - List</a></li>
+									<li><a href="realestate-single.html" th:href="@{/realestate-single}">Real Estate - Single</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a class="dropdown-toggle" href="#">
+									Shop <i class="fa fa-angle-down"></i>
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="shop-home.html" th:href="@{/shop-home}">Shop - Home</a></li>
+									<li class="divider"></li>
+									<li><a href="shop-full-width.html" th:href="@{/shop-full-width}">Shop Full Width</a></li>
+									<li><a href="shop-product-full-width.html" th:href="@{/shop-product-full-width}">Shop Product Full Width</a></li>
+									<li class="divider"></li>
+									<li><a href="shop-sidebar.html" th:href="@{/shop-sidebar}">Shop Sidebar</a></li>
+									<li><a href="shop-product-sidebar.html" th:href="@{/shop-product-sidebar}">Shop Product Sidebar</a></li>
+									<li class="divider"></li>
+									<li><a href="shop-cart.html" th:href="@{/shop-cart}">Shop Cart</a></li>
+									<li><a href="shop-cc-pay.html" th:href="@{/shop-cc-pay}">Shop Credit Card</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a class="dropdown-toggle" href="#">
+									Blog <i class="fa fa-angle-down"></i>
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="blog-full-width.html" th:href="@{/blog-full-width}">Blog Without Sidebar</a></li>
+									<li><a href="blog-left-sidebar.html" th:href="@{/blog-left-sidebar}">Blog With Sidebar Left</a></li>
+									<li><a href="blog-right-sidebar" th:href="@{/blog-right-sidebar}">Blog With Sidebar Right</a></li>
+									<li><a href="blog-timeline.html" th:href="@{/blog-timeline}">Blog Timeline</a></li>
+									<li><a href="blog-masonry.html" th:href="@{/blog-masonry}">Blog Masonry</a></li>
+									<li><a href="blog-masonry-full-width.html" th:href="@{/blog-masonry-full-width}">Blog Masonry - Full Width</a></li>
+									<li><a href="blog-masonry-sidebar.html" th:href="@{/blog-masonry-sidebar}">Blog Masonry - Sidebar</a></li>
+									<li class="divider"></li>
+									<li><a href="blog-single-sidebar-left.html.html" th:href="@{/blog-single-sidebar-left.html}">Single Sidebar Left</a></li>
+									<li><a href="blog-single-sidebar-right.html" th:href="@{/blog-single-sidebar-right}">Single Sidebar Right</a></li>
+									<li><a href="blog-single-sidebar-no.html" th:href="@{/blog-single-sidebar-no}">Single No Sidebar</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a class="dropdown-toggle" href="#">
+									Portfolio <i class="fa fa-angle-down"></i>
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="portfolio-2-columns.html" th:href="@{/portfolio-2-columns}">2 Columns</a></li>
+									<li><a href="portfolio-3-columns.html" th:href="@{/portfolio-3-columns}">3 Columns</a></li>
+									<li><a href="portfolio-4-columns.html" th:href="@{/portfolio-4-columns}">4 Columns</a></li>
+									<li><a href="portfolio-lightbox.html" th:href="@{/portfolio-lightbox}">Portfolio - Gallery</a></li>
+									<li><a href="portfolio-full-width.html" th:href="@{/portfolio-full-width}">Portfolio Full Width</a></li>
+									<li><a href="portfolio-full-center.html" th:href="@{/portfolio-full-center}">Portfolio Full Center</a></li>
+									<li class="divider"></li>
+									<li><a href="portfolio-single.html" th:href="@{/portfolio-single}">Single - Basic</a></li>
+									<li><a href="portfolio-single-extended.html" th:href="@{/portfolio-single-extended}">Single - Extended</a></li>
+									<li><a href="portfolio-single-full-slider.html" th:href="@{/portfolio-single-full-slider}">Single - Full Slider</a></li>
+								</ul>
+							</li>
+
+							<!-- GLOBAL SEARCH -->
+							<li class="search">
+								<!-- search form -->
+								<form method="get" action="#" class="input-group pull-right">
+									<input type="text" class="form-control" name="k" id="k" value="" placeholder="Search"/>
+									<span class="input-group-btn">
+										<button class="btn btn-primary notransition"><i class="fa fa-search"></i></button>
+									</span>
+								</form>
+								<!-- /search form -->
+							</li>
+							<!-- /GLOBAL SEARCH -->
+
+							<!-- QUICK SHOP CART -->
+							<li class="quick-cart">
+								<t class="badge pull-right">3</t>
+								
+								<div class="quick-cart-content">
+
+									<p><i class="fa fa-warning"></i> You have 3 products on your cart</p>
+
+									<a class="item" href="shop-product-full-width"><!-- item 1 -->
+										<img class="pull-left" src="assets/images/demo/shop/thumb/1.jpg" width="40" alt="quick cart" ></img>
+										<div class="inline-block">
+											<span class="title orange">Man shirt XL</span>
+											<span class="price orange ">1 &times; $32.00</span>
+										</div>
+									</a><!-- /item 1 -->
+
+									<a class="item" href="shop-product-full-width"><!-- item 2 -->
+										<img class="pull-left" src="assets/images/demo/shop/thumb/2.jpg" width="40" alt="quick cart" />
+										<div class="inline-block">
+											<span class="title orange ">Great Black Shoes For Man and Only Man...</span>
+											<span class="price orange ">1 &times; $32.00</span>
+										</div>
+									</a><!-- /item 2 -->
+
+									<a class="item" href="shop-product-full-width"><!-- item 3 -->
+										<img class="pull-left" src="assets/images/demo/shop/thumb/4.jpg" width="40" alt="quick cart" ></img>
+										<div class="inline-block">
+											<span class="title orange">Pink Lady Perfect Shoes</span>
+											<span class="price orange">1 &times; $32.00</span>
+										</div>
+									</a><!-- /item 3 -->
+
+									<!-- QUICK CART BUTTONS -->
+									<div class="row cart-footer">
+										<div class="col-md-6 nopadding-right">
+											<a href="shop-cart" class="btn btn-primary btn-xs fullwidth">VIEW CART</a>
+										</div>
+										<div class="col-md-6 nopadding-left">
+											<a href="shop-cc-pay" class="btn btn-info btn-xs fullwidth">CHECKOUT</a>
+										</div>
+									</div>
+									<!-- /QUICK CART BUTTONS -->
+
+								</div>
+
+							</li>
+							<!-- /QUICK SHOP CART -->
+
+
+						</ul>
+					</nav>
+				</div>
+				<!-- /Top Nav -->
+
+			</div>
+		</header>
+
+		<span id="header_shadow"></span>
+		<!-- /TOP NAV -->
+
+
+
+		<!-- STYLESWITCHER - REMOVE ON PRODUCTION/DEVELOPMENT -->
+		
+		
+		<div id="switcher" th:replace="fragments/switchers/style_switcher :: style_switcher"></div>
+
+		<div id="showSwitcher" class="styleSecondColor" th:replace="fragments/switchers/style_switcher :: show_switcher"><i class="fa fa-angle-double-right"></i></div>
+		
+		
+		<!-- /STYLESWITCHER -->
+
+
+		<!-- JAVASCRIPT FILES -->
+		<div th:replace="fragments/javascripts_srcs :: javascripts_srcs"></div>
+	</body>
+</html>

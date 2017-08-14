@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	
+<html lang="en" xmlns:th="http://www.thymleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<!--<![endif]-->
+	
+	
+	<head th:fragment="head_tag">
+		
+		<meta charset="utf-8" />
+		<title>Anas Banun</title>
+		<meta name="keywords" content="Spring Boot,Bootstrap,HTML5,CSS3,Thymeleaf" />
+		<meta name="description" content="" />
+		<meta name="Author" content="Anas Banun [www.anasbanun.com]" />
+
+		<!-- mobile settings -->
+		<meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+
+		<!-- WEB FONTS -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" th:href="@{https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800}" rel="stylesheet" type="text/css" />
+
+		<!-- CORE CSS -->
+		<link href="../static/assets/plugins/bootstrap/css/bootstrap.min.css" th:href="@{/assets/plugins/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css" />
+		<link href="../static/assets/css/font-awesome.css" th:href="@{/assets/css/font-awesome.css}" rel="stylesheet" type="text/css" />
+		<link href="../static/assets/plugins/owl-carousel/owl.carousel.css" th:href="@{/assets/plugins/owl-carousel/owl.carousel.css}" rel="stylesheet" type="text/css" />
+		<link href="../static/assets/plugins/owl-carousel/owl.theme.css" th:href="@{/assets/plugins/owl-carousel/owl.theme.css}" rel="stylesheet" type="text/css" />
+		<link href="../static/assets/plugins/owl-carousel/owl.transitions.css" th:href="@{/assets/plugins/owl-carousel/owl.transitions.css}" rel="stylesheet" type="text/css" />
+		<link href="../static/assets/plugins/magnific-popup/magnific-popup.css" th:href="@{/assets/plugins/magnific-popup/magnific-popup.css}" rel="stylesheet" type="text/css" />
+		<link href="../static/assets/css/animate.css" th:href="@{/assets/css/animate.css}" rel="stylesheet" type="text/css" />
+		<link href="../static/assets/css/superslides.css" th:href="@{/assets/css/superslides.css}" rel="stylesheet" type="text/css" />
+
+		<!-- SHOP CSS -->
+		<link href="assets/css/portfolio.css" rel="stylesheet" type="text/css" />
+
+		<!-- THEME CSS -->
+		<link href="../static/assets/css/essentials.css" th:href="@{/assets/css/essentials.css}" rel="stylesheet" type="text/css" />
+		<link href="../static/assets/css/layout.css" th:href="@{/assets/css/layout.css}" rel="stylesheet" type="text/css" />
+		<link href="../static/assets/css/layout-responsive.css" th:href="@{/assets/css/layout-responsive.css}" rel="stylesheet" type="text/css" />
+		<link href="../static/assets/css/color_scheme/red.css" th:href="@{/assets/css/color_scheme/orange.css}" rel="stylesheet" type="text/css" /><!-- orange: default style -->
+		
+		
+		<!-- SKIN CSS-->
+		<link id="css_dark_skin" href="../static/assets/css/layout-dark.css" th:href="@{/assets/css/layout-dark.css}" rel="stylesheet" type="text/css" th:replace="fragments/switchers/skin-switcher :: skin-switcher"/><!-- SKIN SWITCHER-->
+		
+		
+		<!-- REVOLUTION SLIDER -->
+		<link href="../static/assets/plugins/revolution-slider/css/settings.css" th:href="@{/assets/plugins/revolution-slider/css/settings.css}" rel="stylesheet" type="text/css" />
+		
+		
+		<!-- BLOG CSS -->
+		<link href="assets/css/blog.css" rel="stylesheet" type="text/css" />
+		
+		<link href="../static/assets/css/color_scheme/orange.css" th:href="@{/assets/css/color_scheme/orange.css}" rel="stylesheet" type="text/css" /><!-- orange: default style -->
+
+		
+		<!-- SHOP CSS -->
+		<link href="assets/css/shop.css" rel="stylesheet" type="text/css" />
+		<link href="assets/plugins/egorkhmelev-jslider/css/_pack.css" rel="stylesheet" type="text/css" />
+		
+
+		<!-- styleswitcher - demo only -->
+		<link href="../static/assets/css/color_scheme/orange.css" th:href="@{/assets/css/color_scheme/orange.css}" rel="alternate stylesheet" type="text/css" title="orange" />
+		<link href="../static/assets/css/color_scheme/red.css" th:href="@{/assets/css/color_scheme/red.css}" rel="alternate stylesheet" type="text/css" title="red" />
+		<link href="../static/assets/css/color_scheme/pink.css" th:href="@{/assets/css/color_scheme/pink.css}" rel="alternate stylesheet" type="text/css" title="pink" />
+		<link href="../static/assets/css/color_scheme/pink.css" th:href="@{/assets/css/color_scheme/pink.css}" rel="alternate stylesheet" type="text/css" title="pink" />
+		<link href="../static/assets/css/color_scheme/darkgreen.css" th:href="@{/assets/css/color_scheme/darkgreen.css}" rel="alternate stylesheet" type="text/css" title="darkgreen" />
+		<link href="../static/assets/css/color_scheme/green.css" th:href="@{/assets/css/color_scheme/green.css}" rel="alternate stylesheet" type="text/css" title="green" />
+		<link href="../static/assets/css/color_scheme/darkblue.css" th:href="@{/assets/css/color_scheme/darkblue.css}" rel="alternate stylesheet" type="text/css" title="darkblue" />
+		<link href="../static/assets/css/color_scheme/blue.css" th:href="@{/assets/css/color_scheme/blue.css}" rel="alternate stylesheet" type="text/css" title="blue" />
+		<link href="../static/assets/css/color_scheme/brown.css" th:href="@{/assets/css/color_scheme/brown.css}" rel="alternate stylesheet" type="text/css" title="brown" />
+		<link href="../static/assets/css/color_scheme/lightgrey.css" th:href="@{/assets/css/color_scheme/lightgrey.css}" rel="alternate stylesheet" type="text/css" title="lightgrey" />
+		<!-- /styleswitcher - demo only -->
+		
+		<!-- STYLESWITCHER - REMOVE ON PRODUCTION/DEVELOPMENT -->
+		<link href="../static/assets/plugins/styleswitcher/styleswitcher.css" th:href="@{/assets/plugins/styleswitcher/styleswitcher.css}" rel="stylesheet" type="text/css" />		
+
+		<!-- Morenizr -->
+		<script type="text/javascript" src="../static/assets/plugins/modernizr.min.js" th:src="@{/assets/plugins/modernizr.min.js}"></script>
+		
+		
+	</head>
+</html>

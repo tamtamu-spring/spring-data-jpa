@@ -1,0 +1,129 @@
+									<li class="dropdown-submenu"><a class="yellow" href="#">Database Management</a>
+										<ul class="dropdown-menu">
+											<li><a href="index1.html" th:href="@{/index1}">Database Home</a></li>
+											<li><a href="product/list.html" th:href="@{/product/list}">Products</a></li>
+											<li><a href="customer/list.html" th:href="@{/customer/list}">Customers</a></li>
+											<li><a href="user/list" th:href="@{/list}">Users</a></li>
+										</ul>
+									</li>
+									<li class="divider"></li>		
+									
+									
+<!-- =========================================================================================================================================== -->																
+																<li class="dropdown-submenu">
+																	<a href="#" class="yellow"><i class="fa fa-check-square yellow"></i>Exceptions Handlers</a>
+																	<ul class="dropdown-menu">
+																		<li><a href="page-with-error.html" th:href="@{/page-with-error}" class="red">Global Exceptions Handler</a></li>
+																		<li><a href="page-404.html" th:href="@{/page}" class="red">Specific Exception Handler</a></li>
+																        
+																	</ul>
+																</li>									
+									
+									
+									
+
+
+<!-- =========================================================================================================================================== -->
+
+	<li class="dropdown mega-menu-item mega-menu-fullwidth" sec:authorize="isAuthenticated()"><a class="dropdown-toggle" href="#"><t class="yellow">Banking Application</t> <i class="fa fa-angle-down yellow"></i></a>
+	 <ul class="dropdown-menu">
+	 
+   <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Me <span class="caret"></span></a>
+       <ul class="dropdown-submenu">
+          <li><a th:href="@{/profile}">Profile</a></li>
+       </ul>
+   </li>
+   
+   <li class="divider"></li>	 
+
+         <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Accounts <span class="caret"></span></a>
+											
+				<ul class="dropdown-submenu">
+				    <li><a th:href="@{/primaryAccount}">Primary</a></li>
+					<li><a th:href="@{/savingsAccount}">Savings</a></li>
+			   </ul>
+											
+		 </li>
+		 <li class="divider"></li>
+										
+										
+         <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Transfer <span class="caret"></span></a>
+               <ul class="dropdown-submenu">
+                    <li><a th:href="@{/betweenAccounts}">Between Accounts</a></li>
+                    <li><a th:href="@{/toSomeoneElse}">To Someone Else</a></li>
+                    <li><a th:href="@{/recipient}">Add/Edit Recipient</a></li>
+               </ul>
+         </li>
+         <li role="separator" class="divider"></li>	
+	        
+	     <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Appointment <span class="caret"></span></a>
+               <ul class="dropdown-submenu">
+                   <li><a th:href="@{/create}">Make Appointment</a></li>
+               </ul>
+         </li>
+
+								
+	 </ul>
+								
+								
+							
+						</li>										
+									
+<!-- =========================================================================================================================================== -->									
+									
+							<li class="dropdown mega-menu-item mega-menu-fullwidth">
+								<a class="dropdown-toggle" href="#">
+									Banking Application <i class="fa fa-angle-down"></i>
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<div class="mega-menu-content">
+											<div class="row">
+												<div class="col-md-3">
+													<ul class="sub-menu">
+														<li>
+															<span class="mega-menu-sub-title">Me</span>
+															<ul class="sub-menu">
+                                                                 <li><a th:href="@{/profile}">Profile</a></li>
+															</ul>
+														</li>
+													</ul>
+												</div>
+												<div class="col-md-3">
+													<ul class="sub-menu">
+														<li>
+															<span class="mega-menu-sub-title">Accounts</span>
+															<ul class="sub-menu">
+																<li><a th:href="@{/primaryAccount}">Primary</a></li>
+					                                            <li><a th:href="@{/savingsAccount}">Savings</a></li>
+															</ul>
+														</li>
+													</ul>
+												</div>
+												<div class="col-md-3">
+													<ul class="sub-menu">
+														<li>
+															<span class="mega-menu-sub-title">Transfer</span>
+															<ul class="sub-menu">
+																<li><a th:href="@{/betweenAccounts}">Between Accounts</a></li>
+                                                                <li><a th:href="@{/toSomeoneElse}">To Someone Else</a></li>
+                                                                <li><a th:href="@{/recipient}">Add/Edit Recipient</a></li>
+															</ul>
+														</li>
+													</ul>
+												</div>
+												<div class="col-md-3">
+													<ul class="sub-menu">
+														<li>
+															<span class="mega-menu-sub-title">Appointment</span>
+															<ul class="sub-menu">
+																 <li><a th:href="@{/create}">Make Appointment</a></li>
+															</ul>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</li>									

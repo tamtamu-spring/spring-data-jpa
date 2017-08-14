@@ -1,0 +1,96 @@
+				<!-- SIGN IN -->
+
+				<div class="nav pull-right orange" sec:authorize="!isAuthenticated()">
+					<a href="page-about-us.html" th:href="@{/index}"><i class="fa fa-users"></i> Sign in</a>
+				</div>
+	
+				    <div class="orange pull-right">				    
+				    	<form sec:authorize="isAuthenticated()" id="frmlogout" th:action="@{/logout}" method="post" class="form-inline">
+				    		| <a th:href="javascript:{}" onclick="document.getElementById('frmlogout').submit(); return false;">Logout</a>
+				    	</form>	
+				    </div>				
+
+				    <div class="nav pull-right orange" sec:authorize="isAuthenticated()">
+			            Welcome <span sec:authentication="name">username</span>
+
+				    </div>
+			    
+				    
+				
+				<!-- /SIGN IN -->
+
+
+
+
+<!-- ============================================================================================= -->
+
+
+
+                <!-- SIGN IN -->
+
+				<div class="pull-right nav signin-dd" sec:authorize="!isAuthenticated()">
+					<a id="quick_sign_in" href="page-signin" data-toggle="dropdown"><i class="fa fa-users"></i><span class="hidden-xs"> Sign In</span></a>
+					<div class="dropdown-menu" role="menu" aria-labelledby="quick_sign_in">
+
+						<h4>Sign In</h4>
+
+
+					<form action="page-signin.html" th:action="@{/login}"
+						th:object="${loginForm}" method="post" role="form">
+
+						<div th:if="${param.error}" class="alert alert-danger">
+							<p>Invalid username and password.</p>
+						</div>
+
+						<div th:if="${param.logout}" class="alert alert-success">
+							<p>You've been logged out.</p>
+						</div>
+
+
+						<div class="form-group"
+							th:class="${param.error} ? 'form-group has-error' : 'form-group'">
+							<!-- email -->
+							<input required="required" type="text" class="form-control"
+								placeholder="Username or email" name="username" id="username"></input>
+						</div>
+
+
+						<div class="input-group"
+							th:class="${param.error} ? 'form-group has-error' : 'form-group'">
+
+							<!-- password -->
+							<input required="required" type="password" class="form-control"
+								name="password" id="password" placeholder="Password"></input>
+
+							<!-- submit button -->
+							<span class="input-group-btn">
+								<button class="btn btn-primary">Sign In</button>
+							</span>
+
+						</div>
+
+
+						<div class="checkbox">
+							<!-- remmember -->
+							<label> <input type="checkbox"></input> Remember me
+								&bull; <a href="page-signin.html" th:href="@{/page-signin}">Forgot
+									password?</a>
+							</label>
+						</div>
+
+					</form>
+
+
+
+					<hr />
+						
+						<a href="#" class="btn-facebook fullwidth radius3"><i class="fa fa-facebook"></i> Connect With Facebook</a>
+						<a href="#" class="btn-twitter fullwidth radius3"><i class="fa fa-twitter"></i> Connect With Twitter</a>
+						<a href="#" class="btn-google-plus fullwidth radius3"><i class="fa fa-google-plus"></i> Connect With Google</a>
+
+						<p class="bottom-create-account">
+							<a href="page-signup.html" th:href="@{/page-signup}">Manual create account</a>
+						</p>
+					</div>
+				</div>
+				<!-- /SIGN IN -->

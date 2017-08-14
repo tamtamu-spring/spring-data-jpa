@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	
+<html lang="en" xmlns:th="http://www.thymleaf.org" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:sec3="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+                xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<!--<![endif]-->
+
+	<head th:replace="common/header :: common-header"></head>
+	<head th:replace="fragments/head_tag :: head_tag"></head>
+	
+	<body><!-- Available classes for body: boxed , pattern1...pattern10 . Background Image - example add: data-background="assets/images/boxed_background/1.jpg"  -->
+
+		<!-- Top Bar -->
+		<header id="topHead" th:replace="fragments/header-top-bar :: header-top-bar"></header>
+		<!-- /Top Bar -->
+
+		<!-- TOP NAV -->
+		<header id="topNav" class="topHead" th:replace="fragments/header-top-nav :: header-top-nav"><!-- remove class="topHead" if no topHead used! --></header>
+
+		<span id="header_shadow"></span>
+		<!-- /TOP NAV -->
+
+
+		<!-- STYLESWITCHER - REMOVE ON PRODUCTION/DEVELOPMENT -->
+		<div id="switcher" th:replace="fragments/switchers/style_switcher :: style_switcher"></div>
+
+		<div id="showSwitcher" class="styleSecondColor" th:replace="fragments/switchers/style_switcher :: show_switcher"><i class="fa fa-angle-double-right"></i></div>
+		<!-- /STYLESWITCHER -->
+		
+	<!-- WRAPPER -->
+	<div id="wrapper">
+
+		<div id="shop">
+
+			<!-- PAGE TITLE -->
+			<header id="page-title">
+				<div class="container">
+					<h1><small><strong>Sign in</strong></small></h1>
+
+						<div class="row white-row">
+
+							<p class="col-md-12">
+								Already have an account? <a th:href="@{/index}">Click here to
+									Sign in</a>
+							</p>
+						</div>
+				</div>
+			</header>
+
+
+   <section class="container">
+
+      <div class="row">
+
+				
+    <!-- Signup Section -->
+    <div class="col-md-6 white-row">
+        				
+    				<h2>
+							<strong>Create Account</strong>
+					</h2>
+            <div>
+            <form method="post" th:action="@{/signup}">
+
+                <div class="form-group">
+                    <label for="firstName" class="cols-sm-2 control-label">First Name</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <input required="required" type="text" class="form-control" th:value="${user.firstName}" id="firstName" name="firstName" roleId="firstname"  placeholder="Enter your first name"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName" class="cols-sm-2 control-label">Last Name</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <input required="required" type="text" class="form-control" th:value="${user.lastName}" id="lastName" name="lastName" roleId="lastName"  placeholder="Enter your last name"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone" class="cols-sm-2 control-label">Phone</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-phone fa" aria-hidden="true"></i></span>
+                            <input required="required" type="number" class="form-control" th:value="${user.phone}" id="phone" name="phone" roleId="phone"  placeholder="xxx-xxx-xxxx"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="cols-sm-2 control-label">Your Email</label><span class="bg-danger pull-right" th:if="${emailExists}">Email already exists</span>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            <input required="required" type="email" class="form-control" th:value="${user.email}" id="email" name="email" roleId="email"  placeholder="Enter your Email"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="username" class="cols-sm-2 control-label">Username</label><span class="bg-danger pull-right" th:if="${usernameExists}">Username already exists</span>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                            <input required="required" type="text" class="form-control" th:value="${user.username}" id="username" name="username" roleId="username"  placeholder="Enter your Username"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="cols-sm-2 control-label">Password</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                            <input required="required" type="password" class="form-control" th:value="${user.password}" id="password" name="password" roleId="password"  placeholder="Enter your Password"/>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input id="showPassword" type="checkbox" />Show Password
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!--<div class="form-group">-->
+                    <!--<label for="confirm" class="cols-sm-2 control-label">Confirm Secret</label>-->
+                    <!--<div class="cols-sm-10">-->
+                        <!--<div class="input-group">-->
+                            <!--<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>-->
+                            <!--<input type="secret" class="form-control" name="confirm" roleId="confirm"  placeholder="Confirm your Secret" required="required"/>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <div class="form-group ">
+                    <button type="submit" class="btn btn-primary btn-block login-button">Sign up!</button>
+                </div>
+                
+                <hr />
+                
+				<div class="form-group ">
+                    <a  class="btn btn-primary btn-block login-button" th:href="@{/}">Cancel</a>
+                </div>
+            </form>
+            </div>
+    
+
+        
+    			
+    </div>		
+    <!-- /Signup Section -->
+
+					<aside class="white-row col-md-5 col-md-push-1">
+
+						<h3>SEARCH THE WEBSITE!</h3>
+						<div class="row">
+							<div class="col-md-12">
+								<form method="get" action="#" class="input-group">
+									<input type="text" class="form-control" name="s" id="s"
+										value="" placeholder="search..."></input> <span
+										class="input-group-btn">
+										<button class="btn btn-primary">
+											<i class="fa fa-search"></i>
+										</button>
+									</span>
+								</form>
+							</div>
+						</div>
+
+						<h4>USEFUL LINKS</h4>
+						<ul class="nav nav-list">
+							<li><a href="/"><i class="fa fa-circle-o"></i> Home</a></li>
+							<li><a href="/page-about-us"><i class="fa fa-circle-o"></i>
+									About Us</a></li>
+							<li><a href="/contact-us"><i class="fa fa-circle-o"></i>
+									Contact</a></li>
+						</ul>
+
+					</aside>
+
+
+				</div>
+
+
+
+			</section>
+
+		</div>
+	</div>
+	<!-- /WRAPPER -->		
+
+
+	<!-- FOOTER -->
+	<footer th:replace="fragments/footer :: footer"></footer>
+	<!-- /FOOTER -->
+
+	<!-- JAVASCRIPT FILES -->
+	<div th:replace="fragments/javascripts_srcs :: javascripts_srcs"></div>
+	<div th:replace="common/header :: body-bottom-scripts" />
+
+</body>
+</html>

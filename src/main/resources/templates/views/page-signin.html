@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	
+<html lang="en" xmlns:th="http://www.thymleaf.org" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:sec3="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+                xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<!--<![endif]-->
+
+	<head th:replace="fragments/head_tag :: head_tag"></head>
+	
+	
+	<body><!-- Available classes for body: boxed , pattern1...pattern10 . Background Image - example add: data-background="assets/images/boxed_background/1.jpg"  -->
+
+		<!-- Top Bar -->
+		<header id="topHead" th:replace="fragments/header-top-bar :: header-top-bar"></header>
+		<!-- /Top Bar -->
+
+		<!-- TOP NAV -->
+		<header id="topNav" class="topHead" th:replace="fragments/header-top-nav :: header-top-nav"><!-- remove class="topHead" if no topHead used! --></header>
+
+		<span id="header_shadow"></span>
+		<!-- /TOP NAV -->
+
+
+		<!-- STYLESWITCHER - REMOVE ON PRODUCTION/DEVELOPMENT -->
+		<div id="switcher" th:replace="fragments/switchers/style_switcher :: style_switcher"></div>
+
+		<div id="showSwitcher" class="styleSecondColor" th:replace="fragments/switchers/style_switcher :: show_switcher"><i class="fa fa-angle-double-right"></i></div>
+		<!-- /STYLESWITCHER -->
+
+
+
+		<!-- WRAPPER -->
+		<div id="wrapper">
+
+			<div id="shop">
+
+				<!-- PAGE TITLE -->
+				<header id="page-title">
+					<div class="container">
+						<h1>Sign In</h1>
+
+						<ul class="breadcrumb">
+							<li><a href="index">Home</a></li>
+							<li class="active">Sign In</li>
+						</ul>
+					</div>
+				</header>
+
+
+				<section class="container">
+
+					<div class="row">
+
+						<!-- LOGIN -->
+						<div class="col-md-6">
+
+							<h2>Sign <strong>In</strong></h2>
+
+							<form class="white-row" th:action="@{/login}" th:object="${loginForm}" method="post" role="form">
+
+							<div th:if="${param.error}" class="alert alert-danger">
+							<i class="fa fa-frown-o"></i> 
+							Wrong <strong>E-mail Address</strong> or <strong>Password</strong>!
+							</div>
+
+							<div th:if="${param.logout}" class="alert alert-success">
+								<p>You've been logged out.</p>
+							</div>
+
+
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
+											<label>Username or E-mail Address</label>
+											<input type="text" value="" class="form-control"/>
+										</div>
+									</div>
+								</div>
+													
+								
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
+											<label>Password</label>
+											<input type="password" value="" class="form-control"/>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<span class="remember-box checkbox">
+											<label for="rememberme">
+												<input type="checkbox" id="rememberme" name="rememberme"/>Remember Me
+											</label>
+										</span>
+									</div>
+									<div class="col-md-6">
+										<input type="submit" value="Sign In" class="btn btn-primary pull-right" data-loading-text="Loading..."/>
+									</div>
+								</div>
+
+							</form>
+
+						</div>
+						<!-- /LOGIN -->
+
+						<!-- PASSWORD -->
+						<div class="col-md-6">
+
+							<h2>Forgot <strong>Password</strong>?</h2>
+
+							<div class="white-row">
+
+								<p>
+									Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo.
+								</p>
+
+								<!-- alert success -->
+								<div class="alert alert-success">
+									<i class="fa fa-check-circle"></i> 
+									<strong>New Password Sent!</strong> Check your E-mail Address!
+								</div>
+
+								<!-- alert failed -->
+								<div class="alert alert-danger">
+									<i class="fa fa-frown-o"></i> 
+									<strong>E-mail Address</strong> not found!
+								</div>
+
+								<!-- password form -->
+								<label>Type your E-mail Address</label>
+								<form class="input-group" method="post" action="#">
+									<input type="text" class="form-control" name="s" id="s" value="" placeholder="E-mail Address" />
+									<span class="input-group-btn">
+										<button class="btn btn-primary">SEND</button>
+									</span>
+								</form>
+
+							</div>
+
+						</div>
+						<!-- /PASSWORD -->
+
+					</div>
+
+
+					<p class="white-row">
+						Don't have an account yet? <a href="/page-signup">Click to create one</a>, it's free!
+					</p>
+
+				</section>
+
+			</div>
+		</div>
+		<!-- /WRAPPER -->
+
+
+
+		<!-- FOOTER -->
+		<footer th:replace="fragments/footer :: footer"></footer>
+		<!-- /FOOTER -->
+
+
+
+		<!-- JAVASCRIPT FILES -->
+		<div th:replace="fragments/javascripts_srcs :: javascripts_srcs"></div>
+		
+	</body>
+</html>

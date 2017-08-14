@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html lang="en" xmlns:th="http://www.thymleaf.org" xmlns="http://www.w3.org/1999/xhtml"> <!--<![endif]-->
+	
+	<head th:replace="fragments/head_tag :: head_tag"></head>
+	
+	
+	<body><!-- Available classes for body: boxed , pattern1...pattern10 . Background Image - example add: data-background="assets/images/boxed_background/1.jpg"  -->
+
+		<!-- Top Bar -->
+		<header id="topHead" th:replace="fragments/header-top-bar :: header-top-bar"></header>
+		<!-- /Top Bar -->
+
+		<!-- TOP NAV -->
+		<header id="topNav" class="topHead" th:replace="fragments/header-top-nav :: header-top-nav"><!-- remove class="topHead" if no topHead used! --></header>
+
+		<span id="header_shadow"></span>
+		<!-- /TOP NAV -->
+
+
+		<!-- STYLESWITCHER - REMOVE ON PRODUCTION/DEVELOPMENT -->
+		<div id="switcher" th:replace="fragments/switchers/style_switcher :: style_switcher"></div>
+
+		<div id="showSwitcher" class="styleSecondColor" th:replace="fragments/switchers/style_switcher :: show_switcher"><i class="fa fa-angle-double-right"></i></div>
+		<!-- /STYLESWITCHER -->
+	
+
+		<!-- WRAPPER -->
+		<div id="wrapper">
+
+			<div id="show">
+
+				<!-- PAGE TITLE -->
+				<header id="page-title">
+					<div class="container">
+						<h1><strong>Navigation</strong></h1>
+
+						<ul class="breadcrumb">
+						<li><a href="/index1">Database Management</a></li>
+						<li><a href="/user/list">Users</a></li>						
+						<li><a href="/product/list">Products</a></li>
+						<li><a href="/customer/list">Customers</a></li>
+						<li class="active">Edit Customer</li>
+						</ul>
+					</div>
+				</header>
+
+				<section class="container">
+
+					<div class="row">
+
+					<!-- Edit Customer -->
+					
+<div class="container white-row col-md-8">
+
+    <h3><strong>Edit</strong> Customer Details</h3>
+   
+        
+        <form class="form-horizontal col-md-12" th:object="${customerForm}" th:action="@{/customer}" method="post">
+
+            <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+                <p th:text="#{form.hasErrors}">Error Message</p>
+            </div>
+
+            <input type="hidden" th:field="*{userId}"/>
+            <input type="hidden" th:field="*{userVersion}"/>
+            <input type="hidden" th:field="*{customerId}"/>
+            <input type="hidden" th:field="*{customerVersion}"/>
+
+            <div class="form-group"  th:class="${#fields.hasErrors('userName')} ? 'form-group has-error' : 'form-group'">
+                <label>User Name *</label>
+                <input required="required" type="text" class="form-control" th:field="*{userName}" th:errorclass="has-error"/>
+                    <span class="help-block">
+                       <ul>
+                           <li th:each="err : ${#fields.errors('userName')}" th:text="${err}" />
+                       </ul>
+                    </span>
+            </div>
+
+            <div class="form-group" th:class="${#fields.hasErrors('passwordText')} ? 'form-group has-error' : 'form-group'">
+                <label>Password *</label>
+                    <input required="required" type="password" class="form-control" th:field="*{passwordText}" th:errorclass="has-error"/>
+                    <span class="help-block">
+                       <ul>
+                           <li th:each="err : ${#fields.errors('passwordText')}" th:text="${err}" />
+                       </ul>
+                    </span>
+            </div>
+
+            <div class="form-group" th:class="${#fields.hasErrors('passwordTextConf')} ? 'form-group has-error' : 'form-group'">
+                <label>Password Conf *</label>
+                    <input required="required" type="password" class="form-control" th:field="*{passwordTextConf}" th:errorclass="has-error"/>
+                    <span class="help-block">
+                       <ul>
+                           <li th:each="err : ${#fields.errors('passwordTextConf')}" th:text="${err}" />
+                       </ul>
+                    </span>
+            </div>
+            
+            <div class="form-group">
+                <label>First Name *</label>
+                    <input required="required" type="text" class="form-control" th:field="*{firstName}"/>
+            </div>
+            
+            <div class="form-group">
+                <label>Last Name *</label>
+                    <input required="required" type="text" class="form-control" th:field="*{lastName}"/>
+            </div>
+
+            <div class="form-group" th:class="${#fields.hasErrors('email')} ? 'form-group has-error' : 'form-group'">
+                <label>Email *</label>
+                    <input required="required" type="text" class="form-control" th:field="*{email}" th:errorclass="has-error"/>
+
+                    <span class="help-block">
+                       <ul>
+                           <li th:each="err : ${#fields.errors('email')}" th:text="${err}" />
+                       </ul>
+                    </span>
+            </div>
+
+            <div class="form-group">
+                <label>Phone *</label>
+                    <input required="required" type="text" class="form-control" th:field="*{phoneNumber}"/>
+            </div>
+ 
+                <button type="submit" class="btn btn-default pull-right push-bottom">Submit</button>
+           
+        </form>
+  
+</div>					
+					
+					
+					<!-- /Edit Customer -->
+
+					<aside class="white-row col-md-3 col-md-push-1">
+
+						<h3>SEARCH THE WEBSITE!</h3>
+						<div class="row">
+							<div class="col-md-12">
+								<form method="get" action="#" class="input-group">
+									<input type="text" class="form-control" name="s" id="s"
+										value="" placeholder="search..."></input> <span
+										class="input-group-btn">
+										<button class="btn btn-primary">
+											<i class="fa fa-search"></i>
+										</button>
+									</span>
+								</form>
+							</div>
+						</div>
+
+						<h4>USEFUL LINKS</h4>
+						<ul class="nav nav-list">
+							<li><a href="/index1"><i class="fa fa-circle-o"></i> Database Management</a></li>
+							<li><a href="/user/list"><i class="fa fa-circle-o"></i>	Users</a></li>
+							<li><a href="/product/list"><i class="fa fa-circle-o"></i> Products</a></li>
+							<li><a href="/customer/list"><i class="fa fa-circle-o"></i>	Customers</a></li>
+						</ul>
+
+					</aside>
+
+
+
+				</div>
+
+
+					<p class="white-row">
+						Don't have an account yet? <a href="/page-signup">Click to create one</a>, it's free!
+					</p>
+
+				</section>
+
+			</div>
+		</div>
+		<!-- /WRAPPER -->
+
+
+	<!-- FOOTER -->
+	<footer th:replace="fragments/footer :: footer"></footer>
+	<!-- /FOOTER -->
+
+
+
+	<!-- JAVASCRIPT FILES -->
+	<div th:replace="fragments/javascripts_srcs :: javascripts_srcs"></div>
+
+
+
+</body>
+</html>
